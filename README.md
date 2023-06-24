@@ -31,7 +31,7 @@ UncaughtHeros is an exciting RPG game that allows players to create, customize, 
 To run the UncaughtHeros application, you need the following:
 
 - Java Development Kit (JDK) 17 or above
-- Maven build tool
+- Gradle build tool
 
 ## installation
 ## usage
