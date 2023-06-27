@@ -1,4 +1,4 @@
-package com.npe.pet.uncaughtHeroes.uncaughtHeroes;
+package com.npe.pet.uncaughtHeroes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
