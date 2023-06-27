@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Character {
+public class Hero {
     @Id
     private long id;
 
