@@ -10,27 +10,25 @@ import org.mockito.MockitoAnnotations;
 import java.util.Optional;
 import static org.mockito.Mockito.*;
 
-public class CharacterServiceTest {
+class CharacterServiceTest {
 
     @Mock
     private CharacterRepository characterRepository;
 
-    private CharacterService characterService;
+    private CharacterService underTest;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-        characterService = new CharacterService(characterRepository);
+        underTest = new CharacterService(characterRepository);
     }
 
     @Test
-    public void testFindById() {
-        // Create a test character
+    void whenFindById_thenReturnMatchingCharacter() {
         Character character = Character.builder().id(1L).name("John").build();
         when(characterRepository.findById(1L)).thenReturn(Optional.of(character));
 
-        // Test the findById method
-        Character foundCharacter = characterService.findById(1L);
+        Character foundCharacter = underTest.findById(1L);
 
         Assertions.assertEquals("John", foundCharacter.getName());
         verify(characterRepository, times(1)).findById(1L);

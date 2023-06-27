@@ -8,22 +8,20 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 
 @DataJpaTest
-public class CharacterRepositoryTest {
+class CharacterRepositoryTest {
 
     @Autowired
-    private CharacterRepository characterRepository;
+    private CharacterRepository underTest;
 
     @Test
-    public void testFindByStrengthGreaterThan() {
-        // Create test characters
+    void whenFindByStrengthGreaterThan_thenReturnMatchingCharacters() {
         Character character1 = Character.builder().id(1).name("John").strength(10).build();
         Character character2 = Character.builder().id(2).name("Jane").strength(15).build();
         Character character3 = Character.builder().id(3).name("Dave").strength(8).build();
 
-        characterRepository.saveAll(List.of(character1, character2, character3));
+        underTest.saveAll(List.of(character1, character2, character3));
 
-        // Test the findByStrengthGreaterThan method
-        List<Character> charactersWithStrengthGreaterThanTen = characterRepository.findByStrengthGreaterThan(10);
+        List<Character> charactersWithStrengthGreaterThanTen = underTest.findByStrengthGreaterThan(10);
 
         Assertions.assertEquals(1, charactersWithStrengthGreaterThanTen.size());
         Assertions.assertEquals("Jane", charactersWithStrengthGreaterThanTen.get(0).getName());
