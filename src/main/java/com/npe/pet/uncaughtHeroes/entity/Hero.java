@@ -1,13 +1,23 @@
 package com.npe.pet.uncaughtHeroes.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class Character {
+@Entity
+public class Hero {
+    @Id
+    private long id;
+
     private String name;
     private String picturePath;
     private String description;

@@ -24,7 +24,7 @@ UncaughtHeros is an exciting RPG game that allows players to create, customize, 
 - **Interaction**: Interact with non-player characters (NPCs), other players, and the game world to discover quests, engage in combat, and explore the game universe.
 - **Battle System**: Engage in turn-based battles, strategize your actions, and defeat enemies to level up and obtain rewards.
 - **Item Management**: Acquire and manage various items, weapons, armor, and consumables to enhance your characters' abilities.
-- **Storytelling**: Immerse yourself in rich narrative-driven campaigns with engaging quests, dialogues, and character interactions.
+- **Storytelling**: Immerse yourself in rich narrative-driven campaigns with engaging quests, dialogues, and hero interactions.
 
 ## Requirements
 

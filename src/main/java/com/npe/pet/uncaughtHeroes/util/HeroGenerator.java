@@ -1,14 +1,14 @@
 package com.npe.pet.uncaughtHeroes.util;
 
-import com.npe.pet.uncaughtHeroes.entity.Character;
+import com.npe.pet.uncaughtHeroes.entity.Hero;
 
 import java.util.Arrays;
 
-public class CharacterGenerator {
+public class HeroGenerator {
 
     // TODO: Create an actual character generator with test data in the future
-    public Character generateCharacter() {
-        return Character.builder()
+    public Hero generateCharacter() {
+        return Hero.builder()
                 .name("John")
                 .picturePath("/path/to/picture.jpg")
                 .description("A mighty warrior")
