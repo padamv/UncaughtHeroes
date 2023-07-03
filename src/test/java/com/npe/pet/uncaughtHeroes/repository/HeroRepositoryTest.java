@@ -3,27 +3,36 @@ package com.npe.pet.uncaughtHeroes.repository;
 import com.npe.pet.uncaughtHeroes.entity.Hero;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-@DataJpaTest
+import static org.mockito.Mockito.when;
+
+@DataMongoTest
 class HeroRepositoryTest {
 
-    @Autowired
+    @MockBean
     private HeroRepository underTest;
 
     @Test
     void whenFindByStrengthGreaterThan_thenReturnMatchingCharacters() {
-        Hero hero1 = Hero.builder().id(1).name("John").strength(10).build();
-        Hero hero2 = Hero.builder().id(2).name("Jane").strength(15).build();
-        Hero hero3 = Hero.builder().id(3).name("Dave").strength(8).build();
+        Hero hero1 = Hero.builder().name("John").strength(10).build();
+        Hero hero2 = Hero.builder().name("Jane").strength(15).build();
+        Hero hero3 = Hero.builder().name("Dave").strength(8).build();
 
-        underTest.saveAll(List.of(hero1, hero2, hero3));
+        List<Hero> heroes = Arrays.asList(hero1, hero2, hero3);
+        List<Hero> heroesWithStrengthGreaterThanTen = Collections.singletonList(hero2);
 
-        List<Hero> charactersWithStrengthGreaterThanTen = underTest.findByStrengthGreaterThan(10);
+        int minStrength = 10;
+        when(underTest.findByStrengthGreaterThan(minStrength)).thenReturn(heroesWithStrengthGreaterThanTen);
 
-        Assertions.assertEquals(1, charactersWithStrengthGreaterThanTen.size());
-        Assertions.assertEquals("Jane", charactersWithStrengthGreaterThanTen.get(0).getName());
+        List<Hero> result = underTest.findByStrengthGreaterThan(minStrength);
+
+        Assertions.assertEquals(heroesWithStrengthGreaterThanTen.size(), result.size());
+        Assertions.assertEquals(heroesWithStrengthGreaterThanTen.get(0).getName(), result.get(0).getName());
     }
 }

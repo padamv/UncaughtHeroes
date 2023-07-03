@@ -1,11 +1,14 @@
 package com.npe.pet.uncaughtHeroes.repository;
 
 import com.npe.pet.uncaughtHeroes.entity.Hero;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface HeroRepository extends JpaRepository<Hero, Long> {
+
+@Repository
+public interface HeroRepository extends MongoRepository<Hero, Long> {
 
     List<Hero> findByStrengthGreaterThan(int strength);
 }
