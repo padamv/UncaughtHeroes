@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +14,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class HeroServiceTest {
+
+    private static final Long HERO_ID = 1L;
+    private static final int STRENGTH_THRESHOLD = 10;
 
     @Mock
     private HeroRepository heroRepository;
@@ -30,7 +31,7 @@ class HeroServiceTest {
 
     @Test
     void givenHero_whenSaveHero_thenHeroIsSaved() {
-        Hero hero = createHero();
+        Hero hero = mock(Hero.class);
         when(heroRepository.save(hero)).thenReturn(hero);
 
         Hero savedHero = underTest.save(hero);
@@ -41,19 +42,18 @@ class HeroServiceTest {
 
     @Test
     void givenHeroId_whenFindById_thenHeroIsFound() {
-        Long heroId = 1L;
-        Hero hero = createHero();
-        when(heroRepository.findById(heroId)).thenReturn(Optional.of(hero));
+        Hero hero = mock(Hero.class);
+        when(heroRepository.findById(HERO_ID)).thenReturn(Optional.of(hero));
 
-        Hero foundHero = underTest.findById(heroId);
+        Hero foundHero = underTest.findById(HERO_ID);
 
         assertEquals(hero, foundHero);
-        verify(heroRepository, times(1)).findById(heroId);
+        verify(heroRepository, times(1)).findById(HERO_ID);
     }
 
     @Test
     void givenNoParameters_whenFindAll_thenAllHeroesAreFound() {
-        List<Hero> heroes = Arrays.asList(createHero(), createHero());
+        List<Hero> heroes = List.of(mock(Hero.class), mock(Hero.class));
         when(heroRepository.findAll()).thenReturn(heroes);
 
         List<Hero> foundHeroes = underTest.findAll();
@@ -65,39 +65,24 @@ class HeroServiceTest {
 
     @Test
     void givenHeroId_whenDeleteById_thenHeroIsDeleted() {
-        Long heroId = 1L;
-        Hero hero = createHero();
-        when(heroRepository.findById(heroId)).thenReturn(Optional.of(hero));
+        Hero hero = mock(Hero.class);
+        when(heroRepository.findById(HERO_ID)).thenReturn(Optional.of(hero));
 
-        underTest.deleteById(heroId);
+        underTest.deleteById(HERO_ID);
 
-        verify(heroRepository, times(1)).deleteById(heroId);
+        verify(heroRepository, times(1)).deleteById(HERO_ID);
     }
 
     @Test
     void givenStrengthThreshold_whenFindByStrengthGreaterThan_thenHeroesWithGreaterStrengthAreFound() {
-        int strengthThreshold = 10;
-        List<Hero> heroes = Collections.singletonList(createHeroWithStrength(15));
-        when(heroRepository.findByStrengthGreaterThan(strengthThreshold)).thenReturn(heroes);
+        List<Hero> heroes = List.of(mock(Hero.class));
+        when(heroRepository.findByStrengthGreaterThan(STRENGTH_THRESHOLD)).thenReturn(heroes);
 
-        List<Hero> foundHeroes = underTest.findByStrengthGreaterThan(strengthThreshold);
+        List<Hero> foundHeroes = underTest.findByStrengthGreaterThan(STRENGTH_THRESHOLD);
 
         assertEquals(1, foundHeroes.size());
         assertEquals(heroes.get(0), foundHeroes.get(0));
-        verify(heroRepository, times(1)).findByStrengthGreaterThan(strengthThreshold);
+        verify(heroRepository, times(1)).findByStrengthGreaterThan(STRENGTH_THRESHOLD);
     }
 
-    private static Hero createHero() {
-        return Hero.builder()
-                .name("Hero Name")
-                .strength(5)
-                .build();
-    }
-
-    private static Hero createHeroWithStrength(int strength) {
-        return Hero.builder()
-                .name("Hero Name")
-                .strength(strength)
-                .build();
-    }
 }
