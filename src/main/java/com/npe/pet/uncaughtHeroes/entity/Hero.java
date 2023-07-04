@@ -1,11 +1,10 @@
 package com.npe.pet.uncaughtHeroes.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
@@ -13,10 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
+@Document(collection = "heroes")
 public class Hero {
-    @Id
-    private long id;
 
     private String name;
     private String picturePath;
