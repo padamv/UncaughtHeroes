@@ -3,6 +3,7 @@ package com.npe.pet.uncaughtHeroes.service;
 import com.npe.pet.uncaughtHeroes.entity.Hero;
 import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +18,12 @@ public class HeroService {
         this.heroRepository = heroRepository;
     }
 
-    public Hero save(Hero hero) {
-        return heroRepository.save(hero);
+    public Optional<Hero> save(Hero hero) {
+        try {
+            return Optional.of(heroRepository.save(hero));
+        } catch (DuplicateKeyException duplicateKeyException) {
+            return Optional.empty();
+        }
     }
 
     public Hero findById(String id) {

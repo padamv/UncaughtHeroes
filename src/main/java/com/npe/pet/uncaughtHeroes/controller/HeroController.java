@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/heroes")
@@ -22,8 +23,9 @@ public class HeroController {
 
     @PostMapping
     public ResponseEntity<Hero> saveHero(@RequestBody Hero hero) {
-        Hero savedHero = heroService.save(hero);
-        return new ResponseEntity<>(savedHero, HttpStatus.CREATED);
+        Optional<Hero> savedHero = heroService.save(hero);
+        return savedHero.map(value -> new ResponseEntity<>(value, HttpStatus.CREATED))
+                .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.CONFLICT));
     }
 
     @GetMapping("/{id}")
