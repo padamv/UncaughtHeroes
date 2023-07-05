@@ -38,13 +38,13 @@ public class HeroController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Hero> getAllHeroes() {
         return heroService.findAll();
     }
 
-    @GetMapping("/strength/{value}")
-    public List<Hero> getHeroesWithStrengthGreaterThan(@PathVariable("value") int value) {
+    @GetMapping
+    public List<Hero> getHeroesWithStrengthGreaterThan(@RequestParam("strengthGreaterThan") int value) {
         return heroService.findByStrengthGreaterThan(value);
     }
 
