@@ -27,7 +27,7 @@ public class HeroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Hero> getHeroById(@PathVariable("id") Long id) {
+    public ResponseEntity<Hero> getHeroById(@PathVariable("id") String id) {
         Hero hero = heroService.findById(id);
         if (hero != null) {
             return ResponseEntity.ok(hero);
@@ -47,7 +47,7 @@ public class HeroController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteHeroById(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteHeroById(@PathVariable("id") String id) {
         heroService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

@@ -21,7 +21,7 @@ public class HeroService {
         return heroRepository.save(hero);
     }
 
-    public Hero findById(Long id) {
+    public Hero findById(String id) {
         Optional<Hero> characterOptional = heroRepository.findById(id);
         return characterOptional.orElse(null);
     }
@@ -30,7 +30,7 @@ public class HeroService {
         return heroRepository.findAll();
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         heroRepository.deleteById(id);
     }
 

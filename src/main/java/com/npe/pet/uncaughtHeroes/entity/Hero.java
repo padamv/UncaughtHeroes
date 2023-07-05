@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
 
@@ -15,6 +18,10 @@ import java.util.List;
 @Document(collection = "heroes")
 public class Hero {
 
+    @MongoId
+    private String id;
+
+    @Indexed(name = "hero_name_index_unique", unique = true)
     private String name;
     private String picturePath;
     private String description;

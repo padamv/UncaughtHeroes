@@ -2,6 +2,7 @@ package com.npe.pet.uncaughtHeroes.service;
 
 import com.npe.pet.uncaughtHeroes.entity.Hero;
 import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -15,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 class HeroServiceTest {
 
-    private static final Long HERO_ID = 1L;
+    private static final String HERO_ID = ObjectId.get().toString();
     private static final int STRENGTH_THRESHOLD = 10;
 
     @Mock
