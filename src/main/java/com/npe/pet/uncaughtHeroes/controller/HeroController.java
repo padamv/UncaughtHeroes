@@ -15,7 +15,6 @@ public class HeroController {
 
     private final HeroService heroService;
 
-    @Autowired
     public HeroController(HeroService heroService) {
         this.heroService = heroService;
     }

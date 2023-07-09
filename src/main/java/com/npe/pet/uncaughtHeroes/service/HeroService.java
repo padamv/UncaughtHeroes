@@ -17,7 +17,6 @@ public class HeroService {
     private static final String HERO_NOT_FOUND_MESSAGE = "Hero was not found. (ID: %s)";
     private final HeroRepository heroRepository;
 
-    @Autowired
     public HeroService(HeroRepository heroRepository) {
         this.heroRepository = heroRepository;
     }
