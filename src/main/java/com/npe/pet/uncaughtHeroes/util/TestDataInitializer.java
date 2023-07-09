@@ -1,6 +1,5 @@
 package com.npe.pet.uncaughtHeroes.util;
 
-import com.mongodb.DuplicateKeyException;
 import com.npe.pet.uncaughtHeroes.exception.HeroNameDuplicateException;
 import com.npe.pet.uncaughtHeroes.service.HeroService;
 import jakarta.annotation.PostConstruct;
@@ -17,9 +16,9 @@ public class TestDataInitializer {
 
     @PostConstruct
     public void initializeTestData() {
-        HeroGenerator heroGenerator = new HeroGenerator();
+        HeroInputGenerator heroInputGenerator = new HeroInputGenerator();
         try {
-            heroService.save(heroGenerator.generateCharacter());
+            heroService.save(heroInputGenerator.generateInput());
         } catch (HeroNameDuplicateException ignored) {
 
         }
