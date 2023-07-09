@@ -1,6 +1,7 @@
 package com.npe.pet.uncaughtHeroes.util;
 
 import com.mongodb.DuplicateKeyException;
+import com.npe.pet.uncaughtHeroes.exception.HeroNameDuplicateException;
 import com.npe.pet.uncaughtHeroes.service.HeroService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,7 @@ public class TestDataInitializer {
         HeroGenerator heroGenerator = new HeroGenerator();
         try {
             heroService.save(heroGenerator.generateCharacter());
-        } catch (DuplicateKeyException ignored) {
+        } catch (HeroNameDuplicateException ignored) {
 
         }
     }

@@ -35,9 +35,9 @@ class HeroServiceTest {
         Hero hero = mock(Hero.class);
         when(heroRepository.save(hero)).thenReturn(hero);
 
-        Optional<Hero> savedHero = underTest.save(hero);
+        Hero savedHero = underTest.save(hero);
 
-        assertEquals(hero, savedHero.get());
+        assertEquals(hero, savedHero);
         verify(heroRepository, times(1)).save(hero);
     }
 

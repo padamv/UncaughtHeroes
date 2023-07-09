@@ -1,6 +1,8 @@
 package com.npe.pet.uncaughtHeroes.service;
 
 import com.npe.pet.uncaughtHeroes.entity.Hero;
+import com.npe.pet.uncaughtHeroes.exception.HeroNameDuplicateException;
+import com.npe.pet.uncaughtHeroes.exception.HeroNotFoundException;
 import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -11,6 +13,8 @@ import java.util.Optional;
 
 @Service
 public class HeroService {
+    private static final String HERO_NAME_DUPLICATE_MESSAGE = "'%s' hero already exists.";
+    private static final String HERO_NOT_FOUND_MESSAGE = "Hero was not found. (ID: %s)";
     private final HeroRepository heroRepository;
 
     @Autowired
@@ -18,17 +22,18 @@ public class HeroService {
         this.heroRepository = heroRepository;
     }
 
-    public Optional<Hero> save(Hero hero) {
+    public Hero save(Hero hero) {
         try {
-            return Optional.of(heroRepository.save(hero));
-        } catch (DuplicateKeyException duplicateKeyException) {
-            return Optional.empty();
+            return heroRepository.save(hero);
+        } catch (DuplicateKeyException exception) {
+            throw new HeroNameDuplicateException(String.format(HERO_NAME_DUPLICATE_MESSAGE, hero.getName()));
         }
     }
 
     public Hero findById(String id) {
         Optional<Hero> characterOptional = heroRepository.findById(id);
-        return characterOptional.orElse(null);
+        return characterOptional
+                .orElseThrow(() -> new HeroNotFoundException(String.format(HERO_NOT_FOUND_MESSAGE, id)));
     }
 
     public List<Hero> findAll() {

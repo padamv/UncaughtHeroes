@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/heroes")
@@ -23,19 +22,14 @@ public class HeroController {
 
     @PostMapping
     public ResponseEntity<Hero> saveHero(@RequestBody Hero hero) {
-        Optional<Hero> savedHero = heroService.save(hero);
-        return savedHero.map(value -> new ResponseEntity<>(value, HttpStatus.CREATED))
-                .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.CONFLICT));
+        Hero savedHero = heroService.save(hero);
+        return new ResponseEntity<>(savedHero, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Hero> getHeroById(@PathVariable("id") String id) {
         Hero hero = heroService.findById(id);
-        if (hero != null) {
-            return ResponseEntity.ok(hero);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(hero);
     }
 
     @GetMapping("/all")
