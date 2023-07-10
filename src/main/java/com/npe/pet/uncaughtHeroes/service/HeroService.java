@@ -13,8 +13,6 @@ import java.util.Optional;
 
 @Service
 public class HeroService {
-    private static final String HERO_NAME_DUPLICATE_MESSAGE = "'%s' hero already exists.";
-    private static final String HERO_NOT_FOUND_MESSAGE = "Hero was not found. (ID: %s)";
     private final HeroRepository heroRepository;
 
     public HeroService(HeroRepository heroRepository) {
@@ -25,14 +23,24 @@ public class HeroService {
         try {
             return heroRepository.save(hero);
         } catch (DuplicateKeyException exception) {
-            throw new HeroNameDuplicateException(String.format(HERO_NAME_DUPLICATE_MESSAGE, hero.getName()));
+            throw new HeroNameDuplicateException(getHeroNameDuplicateMessage(hero));
         }
+    }
+
+    private String getHeroNameDuplicateMessage(Hero hero) {
+        String duplicateNameMessage = "'%s' hero already exists.";
+        return String.format(duplicateNameMessage, hero.getName());
     }
 
     public Hero findById(String id) {
         Optional<Hero> characterOptional = heroRepository.findById(id);
         return characterOptional
-                .orElseThrow(() -> new HeroNotFoundException(String.format(HERO_NOT_FOUND_MESSAGE, id)));
+                .orElseThrow(() -> new HeroNotFoundException(getHeroNotFoundMessage(id)));
+    }
+
+    private String getHeroNotFoundMessage(String id) {
+        String heroNotFoundMessage = "Hero was not found. (ID: %s)";
+        return String.format(heroNotFoundMessage, id);
     }
 
     public List<Hero> findAll() {
