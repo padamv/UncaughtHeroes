@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @Repository
-public interface HeroRepository extends MongoRepository<Hero, Long> {
+public interface HeroRepository extends MongoRepository<Hero, String> {
 
     List<Hero> findByStrengthGreaterThan(int strength);
 }
