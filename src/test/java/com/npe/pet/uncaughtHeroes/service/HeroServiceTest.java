@@ -1,6 +1,8 @@
 package com.npe.pet.uncaughtHeroes.service;
 
 import com.npe.pet.uncaughtHeroes.entity.Hero;
+import com.npe.pet.uncaughtHeroes.factory.HeroFactory;
+import com.npe.pet.uncaughtHeroes.model.HeroInput;
 import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,20 +24,25 @@ class HeroServiceTest {
     @Mock
     private HeroRepository heroRepository;
 
+    @Mock
+    private HeroFactory heroFactory;
+
     private HeroService underTest;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        underTest = new HeroService(heroRepository);
+        underTest = new HeroService(heroRepository, heroFactory);
     }
 
     @Test
     void givenHero_whenSaveHero_thenHeroIsSaved() {
         Hero hero = mock(Hero.class);
+        HeroInput input = mock(HeroInput.class);
         when(heroRepository.save(hero)).thenReturn(hero);
+        when(heroFactory.createHero(input)).thenReturn(hero);
 
-        Hero savedHero = underTest.save(hero);
+        Hero savedHero = underTest.save(input);
 
         assertEquals(hero, savedHero);
         verify(heroRepository, times(1)).save(hero);

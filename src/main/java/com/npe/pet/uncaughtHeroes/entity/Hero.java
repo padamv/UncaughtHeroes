@@ -1,12 +1,9 @@
 package com.npe.pet.uncaughtHeroes.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.npe.pet.uncaughtHeroes.model.Race;
+import lombok.*;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
@@ -16,6 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Document(collection = "heroes")
+@Getter
+@Setter
 public class Hero {
 
     @MongoId
@@ -25,7 +24,7 @@ public class Hero {
     private String name;
     private String picturePath;
     private String description;
-
+    private Race race;
     private int strength;
     private int dexterity;
     private int constitution;

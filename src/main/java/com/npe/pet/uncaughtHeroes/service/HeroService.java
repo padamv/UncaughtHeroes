@@ -3,6 +3,8 @@ package com.npe.pet.uncaughtHeroes.service;
 import com.npe.pet.uncaughtHeroes.entity.Hero;
 import com.npe.pet.uncaughtHeroes.exception.HeroNameDuplicateException;
 import com.npe.pet.uncaughtHeroes.exception.HeroNotFoundException;
+import com.npe.pet.uncaughtHeroes.factory.HeroFactory;
+import com.npe.pet.uncaughtHeroes.model.HeroInput;
 import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -14,12 +16,15 @@ import java.util.Optional;
 @Service
 public class HeroService {
     private final HeroRepository heroRepository;
+    private final HeroFactory heroFactory;
 
-    public HeroService(HeroRepository heroRepository) {
+    public HeroService(HeroRepository heroRepository, HeroFactory heroFactory) {
         this.heroRepository = heroRepository;
+        this.heroFactory = heroFactory;
     }
 
-    public Hero save(Hero hero) {
+    public Hero save(HeroInput heroInput) {
+        Hero hero = heroFactory.createHero(heroInput);
         try {
             return heroRepository.save(hero);
         } catch (DuplicateKeyException exception) {
