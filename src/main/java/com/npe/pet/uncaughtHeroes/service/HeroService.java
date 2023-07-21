@@ -6,7 +6,6 @@ import com.npe.pet.uncaughtHeroes.exception.HeroNotFoundException;
 import com.npe.pet.uncaughtHeroes.factory.HeroFactory;
 import com.npe.pet.uncaughtHeroes.model.HeroInput;
 import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 

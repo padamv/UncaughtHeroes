@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UncaughtHeroes - View Hero Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>
+          <a href="uncaught_heroes.html" class="text-decoration-none text-dark">UncaughtHeroes</a>
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h2>Hero Details</h2>
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <img src="" id="heroImage" class="img-fluid" alt="Hero Picture">
+      </div>
+      <div class="col-md-9">
+        <h3>Name: <span id="heroName"></span></h3>
+        <p>Description: <span id="heroDescription"></span></p>
+        <ul>
+          <li>Strength: <span id="strength"></span></li>
+          <li>Dexterity: <span id="dexterity"></span></li>
+          <li>Constitution: <span id="constitution"></span></li>
+          <li>Intelligence: <span id="intelligence"></span></li>
+          <li>Wisdom: <span id="wisdom"></span></li>
+          <li>Speed: <span id="speed"></span></li>
+          <li>Charisma: <span id="charisma"></span></li>
+          <li>XP: <span id="xp"></span></li>
+          <li>MP: <span id="mp"></span></li>
+          <li>HP: <span id="hp"></span></li>
+          <li>Base Attack: <span id="baseAttack"></span></li>
+          <li>Base Defense: <span id="baseDefense"></span></li>
+          <li>Max Spells: <span id="maxSpells"></span></li>
+          <li>Carrying Capacity: <span id="carryingCapacity"></span></li>
+          <li>Weight: <span id="weight"></span></li>
+          <li>Height: <span id="height"></span></li>
+        </ul>
+        <p>Skills: <span id="skills"></span></p>
+        <p>Weapons: <span id="weapons"></span></p>
+        <p>Spells: <span id="spells"></span></p>
+        <p>Items: <span id="items"></span></p>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/view_hero.js"></script>
+</body>
+</html>

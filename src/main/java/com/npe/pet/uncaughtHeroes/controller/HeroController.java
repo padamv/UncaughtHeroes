@@ -3,7 +3,6 @@ package com.npe.pet.uncaughtHeroes.controller;
 import com.npe.pet.uncaughtHeroes.entity.Hero;
 import com.npe.pet.uncaughtHeroes.model.HeroInput;
 import com.npe.pet.uncaughtHeroes.service.HeroService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
