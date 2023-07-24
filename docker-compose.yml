@@ -8,11 +8,11 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  spring-app:
+  uncaught-heroes-backend:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: spring-app
+    container_name: uncaught-heroes-backend
     depends_on:
       - mongodb
     ports:
