@@ -11,7 +11,7 @@ function showErrorModal() {
 }
 
 function handleDelete() {
-  var heroId = parseInt(document.getElementById("heroId").value);
+  var heroId = document.getElementById("heroId").value;
 
   $.ajax({
     url: apiUrl + heroId,

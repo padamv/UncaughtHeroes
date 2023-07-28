@@ -1,11 +1,13 @@
 package com.npe.pet.uncaughtHeroes.controller;
 
 import com.npe.pet.uncaughtHeroes.entity.Hero;
+import com.npe.pet.uncaughtHeroes.exception.HeroNotFoundException;
 import com.npe.pet.uncaughtHeroes.model.HeroInput;
 import com.npe.pet.uncaughtHeroes.service.HeroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -43,7 +45,11 @@ public class HeroController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteHeroById(@PathVariable("id") String id) {
-        heroService.deleteById(id);
-        return ResponseEntity.noContent().build();
+        try {
+            heroService.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } catch (HeroNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+        }
     }
 }

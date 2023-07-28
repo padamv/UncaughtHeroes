@@ -15,12 +15,12 @@ function fetchHeroesData() {
 }
 
 function renderHeroesList(heroesData) {
-  const heroesList = $("#heroesList"); 
-  heroesList.empty(); 
+  const heroesList = $("#heroesList");
+  heroesList.empty();
 
   heroesData.forEach(function (hero) {
     const heroCard = createHeroCard(hero);
-    heroesList.append(heroCard); 
+    heroesList.append(heroCard);
   });
 }
 

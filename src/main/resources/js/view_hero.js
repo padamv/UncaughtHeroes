@@ -49,11 +49,8 @@ function populateHeroDetails(heroData) {
 }
 
 function showErrorAndNavigateBack() {
-	// Display error message (you can customize this as needed)
 	alert("Error: Hero not found!");
-  
-	// Go back to the previous page
 	window.history.back();
-  }
+}
 
 fetchHeroesData();

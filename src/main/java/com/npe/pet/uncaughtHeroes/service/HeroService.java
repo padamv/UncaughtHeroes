@@ -61,8 +61,13 @@ public class HeroService {
     }
 
     public void deleteById(String id) {
+        Optional<Hero> heroOptional = heroRepository.findById(id);
+        if (heroOptional.isEmpty()) {
+            throw new HeroNotFoundException("Hero not found with ID: " + id);
+        }
         heroRepository.deleteById(id);
     }
+
 
     public List<Hero> findByStrengthGreaterThan(int strength) {
         return heroRepository.findByStrengthGreaterThan(strength);

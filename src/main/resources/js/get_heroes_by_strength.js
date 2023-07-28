@@ -18,12 +18,12 @@ function createHeroCard(hero) {
 }
 
 function renderHeroesList(heroesData) {
-  const heroesList = $("#heroesList"); 
-  heroesList.empty(); 
+  const heroesList = $("#heroesList");
+  heroesList.empty();
 
   heroesData.forEach(function (hero) {
     const heroCard = createHeroCard(hero);
-    heroesList.append(heroCard); 
+    heroesList.append(heroCard);
   });
 }
 
@@ -49,6 +49,6 @@ function findHeroesByStrength() {
 
 
 document.getElementById("strengthForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    findHeroesByStrength();
+  event.preventDefault();
+  findHeroesByStrength();
 });
