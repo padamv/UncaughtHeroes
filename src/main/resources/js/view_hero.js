@@ -1,6 +1,6 @@
 var heroData = {
     name: "Hero 1",
-    picturePath: "hero1.jpg",
+    picturePath: "images/hero_1.png",
     description: "This is Hero 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     strength: 350,
     dexterity: 12,
@@ -28,7 +28,7 @@ function populateHeroDetails() {
     var heroImageElement = document.getElementById("heroImage");
         heroImageElement.src = heroData.picturePath;
         heroImageElement.onerror = function () {
-            this.src = "default_hero_picture.jpg";
+            this.src = "../images/hero_placeholder.png";
     };
 
     document.getElementById("heroImage").src = heroData.picturePath;
