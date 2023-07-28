@@ -1,26 +1,4 @@
-var heroesData = [
-  {
-    id: 1,
-    name: "Hero 1",
-  },
-  {
-    id: 2,
-    name: "Hero 2",
-  },
-];
-
-function deleteHeroById(heroId) {
-  var heroIndex = heroesData.findIndex(function (hero) {
-    return hero.id === heroId;
-  });
-
-  if (heroIndex !== -1) {
-    heroesData.splice(heroIndex, 1);
-    return true;
-  } else {
-    return false;
-  }
-}
+const apiUrl = `http://localhost:8080/api/heroes/`;
 
 function showSuccessModal() {
   var successModal = document.getElementById("successModal");
@@ -35,13 +13,20 @@ function showErrorModal() {
 function handleDelete() {
   var heroId = parseInt(document.getElementById("heroId").value);
 
-  var deletionSuccessful = deleteHeroById(heroId);
-
-  if (deletionSuccessful) {
-    showSuccessModal();
-  } else {
-    showErrorModal();
-  }
+  $.ajax({
+    url: apiUrl + heroId,
+    method: "DELETE",
+    success: function () {
+      showSuccessModal();
+    },
+    error: function (error) {
+      if (error.status === 404) {
+        showErrorModal();
+      } else {
+        console.error("Failed to delete hero:", error.status);
+      }
+    },
+  });
 
   document.getElementById("deleteForm").reset();
 }

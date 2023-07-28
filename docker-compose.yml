@@ -7,11 +7,11 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
-
+  
   uncaught-heroes-backend:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-backend
     container_name: uncaught-heroes-backend
     depends_on:
       - mongodb
@@ -19,6 +19,14 @@ services:
       - "8080:8080"
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/uncaught-heroes
+
+  uncaught-heroes-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    container_name: uncaught-heroes-frontend
+    ports:
+      - "8081:8081"
 
 volumes:
   mongodb_data:
