@@ -35,9 +35,9 @@ To run the UncaughtHeros application, you need the following:
 - Docker
 
 ## Installation
-1. Clone the repository and go to the repositories folder
-2. Build a jar file with Gradle 
-3. Build a docker image and start the application with ```docker-compose up --build ```
+1. Clone the repository and go to the repository's folder
+2. Build a jar file with Gradle with ```gradle bootJar```
+3. Build a docker image and start the application with ```docker-compose up --build```
 
 ## Usage
 After the docker deployment is done you can access the startpage at http://localhost:8081/html/uncaught_heroes.html or http://127.0.0.1:8081/html/uncaught_heroes.html
