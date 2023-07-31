@@ -65,19 +65,15 @@
                     <input type="number" class="form-control" id="charisma" placeholder="Enter charisma">
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="xp">XP:</label>
-                    <input type="number" class="form-control" id="xp" placeholder="Enter XP">
-                </div>
-                <div class="form-group col-md-4">
                     <label for="mp">MP:</label>
                     <input type="number" class="form-control" id="mp" placeholder="Enter MP">
                 </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="hp">HP:</label>
                     <input type="number" class="form-control" id="hp" placeholder="Enter HP">
                 </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="baseAttack">Base Attack:</label>
                     <input type="number" class="form-control" id="baseAttack" placeholder="Enter base attack">
@@ -85,16 +81,6 @@
                 <div class="form-group col-md-4">
                     <label for="baseDefense">Base Defense:</label>
                     <input type="number" class="form-control" id="baseDefense" placeholder="Enter base defense">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="maxSpells">Max Spells:</label>
-                    <input type="number" class="form-control" id="maxSpells" placeholder="Enter max spells">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="carryingCapacity">Carrying Capacity:</label>
-                    <input type="number" class="form-control" id="carryingCapacity" placeholder="Enter carrying capacity">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="weight">Weight:</label>
@@ -106,6 +92,15 @@
                     <label for="height">Height:</label>
                     <input type="number" class="form-control" id="height" placeholder="Enter height">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="race">Race:</label>
+                <select class="form-control" id="race">
+                    <option value="HUMAN">Human</option>
+                    <option value="ORC">Orc</option>
+                    <option value="ELF">Elf</option>
+                    <option value="DWARF">Dwarf</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="skills">Skills:</label>
@@ -124,14 +119,6 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="spellList">Spells:</label>
-                <select multiple class="form-control" id="spellList">
-                    <option value="Spell 1">Spell 1</option>
-                    <option value="Spell 2">Spell 2</option>
-                    <option value="Spell 3">Spell 3</option>
-                </select>
-            </div>
-            <div class="form-group">
                 <label for="items">Items:</label>
                 <select multiple class="form-control" id="items">
                     <option value="Item 1">Item 1</option>
@@ -144,5 +131,6 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/add_hero.js"></script>
 </body>
 </html>

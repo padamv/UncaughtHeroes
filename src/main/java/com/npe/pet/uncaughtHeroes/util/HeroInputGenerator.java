@@ -1,6 +1,7 @@
 package com.npe.pet.uncaughtHeroes.util;
 
 import com.npe.pet.uncaughtHeroes.model.HeroInput;
+import com.npe.pet.uncaughtHeroes.model.Race;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +25,7 @@ public class HeroInputGenerator {
                 .charisma(11)
                 .weight(180)
                 .height(180)
+                .race(Race.HUMAN)
                 .skills(Arrays.asList("Swordsmanship", "Archery"))
                 .weapons(Arrays.asList("Sword", "Bow"))
                 .items(Arrays.asList("Health Potion", "Scroll of Teleportation"))
@@ -42,6 +44,7 @@ public class HeroInputGenerator {
                 .charisma(11)
                 .weight(160)
                 .height(165)
+                .race(Race.DWARF)
                 .skills(Arrays.asList("Spellcasting", "Alchemy"))
                 .weapons(Arrays.asList("Staff", "Dagger"))
                 .items(Arrays.asList("Mana Potion", "Book of Spells"))

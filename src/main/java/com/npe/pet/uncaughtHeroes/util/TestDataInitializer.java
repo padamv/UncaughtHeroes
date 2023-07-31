@@ -19,7 +19,6 @@ public class TestDataInitializer {
         HeroInputGenerator heroInputGenerator = new HeroInputGenerator();
         try {
             heroService.saveMultipleHeroes(heroInputGenerator.generateInputForMultipleHeroes());
-            System.out.println("asd");
         } catch (HeroNameDuplicateException ignored) {
 
         }
