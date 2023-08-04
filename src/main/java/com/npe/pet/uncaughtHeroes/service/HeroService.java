@@ -9,7 +9,6 @@ import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,11 +32,7 @@ public class HeroService {
     }
 
     public List<Hero> saveMultipleHeroes(List<HeroInput> heroInputList) {
-        List<Hero> heroes = new ArrayList<>();
-        for (HeroInput heroInput : heroInputList) {
-            heroes.add(save(heroInput));
-        }
-        return heroes;
+        return heroInputList.stream().map(this::save).toList();
     }
 
     private String getHeroNameDuplicateMessage(Hero hero) {
@@ -61,10 +56,8 @@ public class HeroService {
     }
 
     public void deleteById(String id) {
-        Optional<Hero> heroOptional = heroRepository.findById(id);
-        if (heroOptional.isEmpty()) {
-            throw new HeroNotFoundException("Hero not found with ID: " + id);
-        }
+        Hero hero = heroRepository.findById(id)
+                .orElseThrow(() -> new HeroNotFoundException("Hero not found with ID: " + id));
         heroRepository.deleteById(id);
     }
 
