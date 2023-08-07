@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.npe.pet.uncaughtHeroes'
-version = '0.0.3'
+version = '0.0.4'
 
 java {
 	sourceCompatibility = '17'
@@ -24,6 +24,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.slf4j:slf4j-api'
+	implementation 'ch.qos.logback:logback-classic'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

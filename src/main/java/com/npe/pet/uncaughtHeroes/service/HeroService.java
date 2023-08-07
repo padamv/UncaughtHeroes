@@ -6,7 +6,6 @@ import com.npe.pet.uncaughtHeroes.exception.HeroNotFoundException;
 import com.npe.pet.uncaughtHeroes.factory.HeroFactory;
 import com.npe.pet.uncaughtHeroes.model.HeroInput;
 import com.npe.pet.uncaughtHeroes.repository.HeroRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +31,10 @@ public class HeroService {
         }
     }
 
+    public List<Hero> saveMultipleHeroes(List<HeroInput> heroInputList) {
+        return heroInputList.stream().map(this::save).toList();
+    }
+
     private String getHeroNameDuplicateMessage(Hero hero) {
         String duplicateNameMessage = "'%s' hero already exists.";
         return String.format(duplicateNameMessage, hero.getName());
@@ -53,8 +56,11 @@ public class HeroService {
     }
 
     public void deleteById(String id) {
+        Hero hero = heroRepository.findById(id)
+                .orElseThrow(() -> new HeroNotFoundException("Hero not found with ID: " + id));
         heroRepository.deleteById(id);
     }
+
 
     public List<Hero> findByStrengthGreaterThan(int strength) {
         return heroRepository.findByStrengthGreaterThan(strength);

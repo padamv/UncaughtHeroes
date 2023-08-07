@@ -32,8 +32,15 @@ To run the UncaughtHeros application, you need the following:
 
 - Java Development Kit (JDK) 17 or above
 - Gradle build tool
+- Docker
 
-## installation
-## usage
-## contributing
-## license
+## Installation
+1. Clone the repository and go to the repository's folder
+2. Build a jar file with Gradle with ```gradle bootJar```
+3. Build a docker image and start the application with ```docker-compose up --build```
+
+## Usage
+After the docker deployment is done you can access the startpage at http://localhost:8081/html/uncaught_heroes.html or http://127.0.0.1:8081/html/uncaught_heroes.html
+
+## Contributing
+## License
