@@ -3,6 +3,7 @@ package com.npe.pet.uncaughtHeroes.controller;
 import com.npe.pet.uncaughtHeroes.entity.Hero;
 import com.npe.pet.uncaughtHeroes.model.HeroInput;
 import com.npe.pet.uncaughtHeroes.service.HeroService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -13,14 +14,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/heroes")
+@RequiredArgsConstructor
 public class HeroController {
 
     private final HeroService heroService;
     private final Logger logger = LoggerFactory.getLogger(HeroController.class);
-
-    public HeroController(HeroService heroService) {
-        this.heroService = heroService;
-    }
 
     @PostMapping
     public ResponseEntity<Hero> saveHero(@RequestBody HeroInput heroInput) {
