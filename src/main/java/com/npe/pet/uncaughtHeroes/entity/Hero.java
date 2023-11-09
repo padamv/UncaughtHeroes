@@ -13,8 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Document(collection = "heroes")
-@Getter
-@Setter
 public class Hero {
 
     @MongoId
