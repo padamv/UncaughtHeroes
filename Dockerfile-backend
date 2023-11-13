@@ -2,8 +2,7 @@ FROM openjdk:17
 
 WORKDIR /app
 
-# Change the version accordingly
-COPY build/libs/UncaughtHeroes-0.0.4.jar /app/UncaughtHeroes.jar
+COPY target/uncaughtHeroes.jar /app/UncaughtHeroes.jar
 
 EXPOSE 8080
 
