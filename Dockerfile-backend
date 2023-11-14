@@ -1,9 +1,12 @@
-FROM openjdk:17
+FROM maven:3-openjdk-17
 
 WORKDIR /app
 
-COPY target/uncaughtHeroes.jar /app/UncaughtHeroes.jar
+COPY pom.xml .
+COPY src/ ./src/
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "UncaughtHeroes.jar"]
+RUN mvn package -DskipTests
+
+CMD ["java", "-jar", "target/uncaughtHeroes.jar"]
