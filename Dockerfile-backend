@@ -1,10 +1,12 @@
-FROM openjdk:17
+FROM maven:3-openjdk-17
 
 WORKDIR /app
 
-# Change the version accordingly
-COPY build/libs/UncaughtHeroes-0.0.4.jar /app/UncaughtHeroes.jar
+COPY pom.xml .
+COPY src/ ./src/
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "UncaughtHeroes.jar"]
+RUN mvn package -DskipTests
+
+CMD ["java", "-jar", "target/uncaughtHeroes.jar"]
