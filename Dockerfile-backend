@@ -7,6 +7,9 @@ COPY src/ ./src/
 
 EXPOSE 8080
 
+ENV REBEL_HOME="/opt/jrebel"
+ENV JAVA_OPTS="-agentpath:$REBEL_HOME/lib/libjrebel64.so -Drebel.remoting_plugin=true -Drebel.remoting_port=12345 $JAVA_OPTS"
+
 RUN mvn package -DskipTests
 
-CMD ["java", "-jar", "target/uncaughtHeroes.jar"]
+CMD ["sh", "-c", "java $JAVA_OPTS -jar target/uncaughtHeroes.jar"]

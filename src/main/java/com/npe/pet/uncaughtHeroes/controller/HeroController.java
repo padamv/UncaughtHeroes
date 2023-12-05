@@ -25,6 +25,7 @@ public class HeroController {
         logger.info("Saving a new hero: {}", heroInput.getName());
         Hero savedHero = heroService.save(heroInput);
         logger.info("Hero saved successfully: {}", savedHero.getName());
+        System.out.println("sdsd");
         return new ResponseEntity<>(savedHero, HttpStatus.CREATED);
     }
 
