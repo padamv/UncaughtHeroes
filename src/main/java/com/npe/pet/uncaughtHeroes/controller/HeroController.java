@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@OpenAPIDefinition(info = @Info(title = "Heroes API", version = "0.0.5",
+@OpenAPIDefinition(info = @Info(title = "Heroes API", version = "0.0.6",
         description = "API for querying, creating and deleting heroes"))
 @RestController
 @RequestMapping("/api/heroes")

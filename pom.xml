@@ -10,7 +10,7 @@
 
 	<groupId>com.npe.pet</groupId>
 	<artifactId>uncaughtHeroes</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 	<name>uncaughtHeroes</name>
 
 	<properties>
