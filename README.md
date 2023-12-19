@@ -40,7 +40,8 @@ To run the UncaughtHeros application, you need the following:
 3. Start the application with ```docker-compose up -d```
 
 ## Usage
-After the docker deployment is done you can access the startpage at http://localhost:8081/html/uncaught_heroes.html or http://127.0.0.1:8081/html/uncaught_heroes.html
+After the docker deployment is done you can access the startpage at http://localhost:8081/html/uncaught_heroes.html or http://127.0.0.1:8081/html/uncaught_heroes.html \
+Access the API documentation at http://localhost:8080/swagger-ui/index.html
 
 ## Contributing
 ## License
