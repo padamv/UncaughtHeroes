@@ -17,8 +17,11 @@ services:
       - mongodb
     ports:
       - "8080:8080"
+      - "12345:12345"
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/uncaught-heroes
+    volumes:
+      - ./jrebel:/opt/jrebel
 
   uncaught-heroes-frontend:
     build:
