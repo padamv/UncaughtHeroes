@@ -10,7 +10,7 @@ services:
   
   uncaught-heroes-backend:
     build:
-      context: .
+      context: uncaught-heroes-backend
       dockerfile: Dockerfile-backend
     container_name: uncaught-heroes-backend
     depends_on:
@@ -25,7 +25,7 @@ services:
 
   uncaught-heroes-frontend:
     build:
-      context: .
+      context: uncaught-heroes-frontend
       dockerfile: Dockerfile-frontend
     container_name: uncaught-heroes-frontend
     ports:
