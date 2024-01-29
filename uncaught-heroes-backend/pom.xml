@@ -6,6 +6,7 @@
         <groupId>com.npe.pet</groupId>
         <artifactId>uncaught-heroes-parent</artifactId>
         <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>uncaught-heroes-backend</artifactId>
@@ -13,7 +14,7 @@
     <name>uncaught-heroes-backend</name>
 
     <properties>
-        <maven.compiler.release>17</maven.compiler.release>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
