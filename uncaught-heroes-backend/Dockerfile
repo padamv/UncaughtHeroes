@@ -1,7 +1,6 @@
 FROM maven:3.9.5-amazoncorretto-17
 
 RUN mkdir -p /app/uncaught-heroes-backend
-RUN mkdir -p /app/uncaught-heroes-backend/src
 WORKDIR /app
 
 COPY pom.xml /app
@@ -14,6 +13,6 @@ EXPOSE 12345
 ENV REBEL_HOME="/opt/jrebel"
 ENV JAVA_OPTS="-agentpath:$REBEL_HOME/lib/libjrebel64.so -Drebel.remoting_plugin=true -Drebel.remoting_port=12345 $JAVA_OPTS"
 
-RUN mvn package -pl uncaught-heroes-backend
+RUN mvn package spring-boot:repackage -pl uncaught-heroes-backend
 
 CMD ["sh", "-c", "java $JAVA_OPTS -jar uncaught-heroes-backend/target/uncaught-heroes-backend.jar"]

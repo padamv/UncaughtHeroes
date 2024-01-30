@@ -11,7 +11,7 @@ services:
   uncaught-heroes-backend:
     build:
       context: .
-      dockerfile: Dockerfile-backend
+      dockerfile: uncaught-heroes-backend/Dockerfile
     container_name: uncaught-heroes-backend
     depends_on:
       - mongodb
@@ -26,7 +26,7 @@ services:
   uncaught-heroes-frontend:
     build:
       context: .
-      dockerfile: Dockerfile-frontend
+      dockerfile: uncaught-heroes-frontend/Dockerfile
     container_name: uncaught-heroes-frontend
     ports:
       - "8081:8081"
