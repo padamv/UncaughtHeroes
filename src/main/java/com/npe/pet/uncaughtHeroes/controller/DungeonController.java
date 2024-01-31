@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@OpenAPIDefinition(info = @Info(title = "Dungeons API", version = "0.0.6",
-        description = "API for querying, creating and deleting dungeons"))
+@OpenAPIDefinition(
+        info = @Info(title = "Dungeons API", version = "0.0.6",
+        description = "API for querying dungeons")
+)
 @RestController
 @RequestMapping("/api/dungeons")
 @RequiredArgsConstructor
