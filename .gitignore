@@ -161,7 +161,7 @@ buildNumber.properties
 ### Gradle ###
 .gradle
 **/build/
-!src/**/build/
+!uncaught-heroes-backend/src/**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
