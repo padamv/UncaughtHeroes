@@ -1,0 +1,84 @@
+{
+  "_id": "65a3e3ef5b1c0a1e9daca8bb",
+  "dungeonName": "Cursed Catacombs",
+  "levels": [
+    {
+      "levelNumber": 1,
+      "rooms": [
+        {
+          "roomNumber": 1,
+          "description": "A dark and dusty corridor.",
+          "connections": [
+            {
+              "direction": "north",
+              "toRoom": 2
+            }
+          ]
+        },
+        {
+          "roomNumber": 2,
+          "description": "A large chamber with a statue in the center.",
+          "connections": [
+            {
+              "direction": "south",
+              "toRoom": 1
+            },
+            {
+              "direction": "west",
+              "toRoom": 3
+            }
+          ]
+        },
+        {
+          "roomNumber": 3,
+          "description": "A narrow passageway with a hidden door to the east.",
+          "connections": [
+            {
+              "direction": "east",
+              "toRoom": 2
+            },
+            {
+              "direction": "west",
+              "toRoom": 4
+            }
+          ]
+        },
+        {
+          "roomNumber": 4,
+          "description": "A small room with a treasure chest.",
+          "connections": [
+            {
+              "direction": "east",
+              "toRoom": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "levelNumber": 2,
+      "rooms": [
+        {
+          "roomNumber": 1,
+          "description": "A steep staircase leading down.",
+          "connections": [
+            {
+              "direction": "down",
+              "toLevel": 1
+            }
+          ]
+        },
+        {
+          "roomNumber": 2,
+          "description": "A mysterious chamber with a magical portal.",
+          "connections": [
+            {
+              "direction": "portal",
+              "destination": "otherDungeon.json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

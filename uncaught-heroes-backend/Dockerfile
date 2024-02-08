@@ -11,6 +11,7 @@ EXPOSE 8080
 EXPOSE 12345
 
 ENV REBEL_HOME="/opt/jrebel"
+ENV JAVA_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 $JAVA_OPTS"
 ENV JAVA_OPTS="-agentpath:$REBEL_HOME/lib/libjrebel64.so -Drebel.remoting_plugin=true -Drebel.remoting_port=12345 $JAVA_OPTS"
 
 RUN mvn package spring-boot:repackage -pl uncaught-heroes-backend

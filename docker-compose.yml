@@ -16,6 +16,7 @@ services:
     depends_on:
       - mongodb
     ports:
+      - "5005:5005"
       - "8080:8080"
       - "12345:12345"
     environment:
