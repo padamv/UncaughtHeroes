@@ -1,69 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.npe.pet</groupId>
 	<artifactId>uncaught-heroes-parent</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
+	<modules>
+		<module>uncaught-heroes-backend/uncaught-heroes-main</module>
+		<module>uncaught-heroes-backend/uncaught-heroes-service-discovery</module>
+		<module>uncaught-heroes-backend/uncaught-heroes-api-gateway</module>
+	</modules>
+
 	<properties>
 		<java.version>17</java.version>
-		<springboot.version>3.1.5</springboot.version>
-		<springdoc-openapi.version>2.2.0</springdoc-openapi.version>
-		<slf4j-api.version>2.0.9</slf4j-api.version>
-		<logback-classic.version>1.4.11</logback-classic.version>
+		<slf4j.api.version>2.0.9</slf4j.api.version>
+		<logback.classic.version>1.4.11</logback.classic.version>
 		<lombok.version>1.18.30</lombok.version>
-		<spring-boot-starter-test.version>3.1.5</spring-boot-starter-test.version>
+		<spring.cloud.starter.version>4.1.0</spring.cloud.starter.version>
+		<spring-cloud.version>2023.0.0</spring-cloud.version>
+		<springboot.version>3.2.0</springboot.version>
 	</properties>
 
-	<modules>
-		<module>uncaught-heroes-backend</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.classic.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>${spring.cloud.starter.version}</version>
+		</dependency>
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-parent</artifactId>
 				<version>${springboot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-data-mongodb</artifactId>
-				<version>${springboot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-				<version>${springboot.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j-api.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>ch.qos.logback</groupId>
-				<artifactId>logback-classic</artifactId>
-				<version>${logback-classic.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-test</artifactId>
-				<version>${spring-boot-starter-test.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springdoc</groupId>
-				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-				<version>${springdoc-openapi.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

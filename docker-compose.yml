@@ -7,14 +7,48 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
-  
-  uncaught-heroes-backend:
+    networks:
+      - network
+
+  uncaught-heroes-service-discovery:
     build:
       context: .
-      dockerfile: uncaught-heroes-backend/Dockerfile
-    container_name: uncaught-heroes-backend
+      dockerfile: uncaught-heroes-backend/uncaught-heroes-service-discovery/Dockerfile
+    container_name: uncaught-heroes-service-discovery
+    ports:
+      - "8761:8761"
+      - "5007:5007"
+      - "12347:12347"
+    volumes:
+      - ./jrebel:/opt/jrebel
+    networks:
+      - network
+
+  uncaught-heroes-api-gateway:
+    build:
+      context: .
+      dockerfile: uncaught-heroes-backend/uncaught-heroes-api-gateway/Dockerfile
+    container_name: uncaught-heroes-api-gateway
+    depends_on:
+      - uncaught-heroes-service-discovery
+    ports:
+      - "8765:8765"
+      - "5006:5006"
+      - "12346:12346"
+    volumes:
+      - ./jrebel:/opt/jrebel
+    networks:
+      - network
+
+  uncaught-heroes-main:
+    build:
+      context: .
+      dockerfile: uncaught-heroes-backend/uncaught-heroes-main/Dockerfile
+    container_name: uncaught-heroes-main
     depends_on:
       - mongodb
+      - uncaught-heroes-api-gateway
+      - uncaught-heroes-service-discovery
     ports:
       - "5005:5005"
       - "8080:8080"
@@ -23,6 +57,8 @@ services:
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/uncaught-heroes
     volumes:
       - ./jrebel:/opt/jrebel
+    networks:
+      - network
 
   uncaught-heroes-frontend:
     build:
@@ -31,6 +67,12 @@ services:
     container_name: uncaught-heroes-frontend
     ports:
       - "8081:8081"
+    networks:
+      - network
 
 volumes:
   mongodb_data:
+
+networks:
+  network:
+    name: network
