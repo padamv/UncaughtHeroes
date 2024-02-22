@@ -1,4 +1,4 @@
-const apiUrl = `http://localhost:8080/api/heroes/`;
+const apiUrl = 'http://localhost:8765/api/heroes/';
 
 function showSuccessModal() {
   var successModal = document.getElementById("successModal");
