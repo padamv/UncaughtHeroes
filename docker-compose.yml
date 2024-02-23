@@ -65,6 +65,8 @@ services:
       context: .
       dockerfile: uncaught-heroes-frontend/Dockerfile
     container_name: uncaught-heroes-frontend
+    depends_on: 
+      - uncaught-heroes-main
     ports:
       - "8081:8081"
     networks:

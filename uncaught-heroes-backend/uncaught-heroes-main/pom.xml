@@ -14,7 +14,7 @@
 
     <properties>
         <springdoc.openapi.version>2.2.0</springdoc.openapi.version>
-        <spring.boot.starter.test.version>3.1.5</spring.boot.starter.test.version>
+        <spring.boot.starter.test.version>3.2.0</spring.boot.starter.test.version>
     </properties>
 
     <dependencies>

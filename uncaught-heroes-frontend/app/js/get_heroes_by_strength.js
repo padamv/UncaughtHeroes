@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:8765/api/heroes?strengthGreaterThan=';
+const apiUrl = `http://localhost:8765/api/heroes?strengthGreaterThan=`;
 
 function createHeroCard(hero) {
   var card = `
