@@ -42,8 +42,10 @@ To run the UncaughtHeros application, you need the following:
 Build a single component using ```docker build -f <component_folder>/Dockerfile .``` from the project root directory
 
 ## Usage
-After the docker deployment is done you can access the startpage at http://localhost:8081/html/uncaught_heroes.html or http://127.0.0.1:8081/html/uncaught_heroes.html \
-Access the API documentation at http://localhost:8080/swagger-ui/index.html
+After the docker deployment is done you can access the startpage at http://localhost:8081/html/uncaught_heroes.html or http://127.0.0.1:8081/html/uncaught_heroes.html
+
+Access the API documentation at http://localhost:8765/swagger-ui/index.html
+
 In the examples folder you can find an example json that you can import to the DB's dungeons folder.
 
 ## Contributing

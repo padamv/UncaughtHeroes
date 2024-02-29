@@ -1,6 +1,6 @@
 const queryParams = new URLSearchParams(window.location.search);
 const heroId = queryParams.get("id");
-const apiUrl = `http://localhost:8080/api/heroes/${heroId}`;
+const apiUrl = `http://localhost:8765/api/heroes/${heroId}`;
 
 function fetchHeroesData() {
 	$.ajax({
